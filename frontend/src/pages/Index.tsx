@@ -49,7 +49,7 @@ const Index = () => {
           messages: [
             {
               role: "user",
-              co33ntent: [
+              content: [
                 {
                   type: "text",
                   text: `Analyze the provided chart image for educational and technical analysis purposes only. 
