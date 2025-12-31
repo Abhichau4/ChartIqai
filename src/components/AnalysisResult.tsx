@@ -1,15 +1,22 @@
-import { 
-  TrendingUp, 
-  TrendingDown, 
-  Minus, 
-  Target, 
+import {
+  TrendingUp,
+  TrendingDown,
+  Minus,
+  Target,
   AlertTriangle,
   BarChart3,
   Clock,
   Shield,
-  Zap
+  Zap,
+  Code
 } from "lucide-react";
 import { ConfidenceScore } from "./ConfidenceScore";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export interface AnalysisData {
   symbol: string;
@@ -24,6 +31,7 @@ export interface AnalysisData {
   reasoning: string;
   invalidation: string;
   bias: "Bullish" | "Bearish" | "Neutral";
+  rawContent?: string;
 }
 
 interface AnalysisResultProps {
@@ -126,7 +134,7 @@ export const AnalysisResult = ({ data }: AnalysisResultProps) => {
           <Target className="w-5 h-5 text-primary" />
           <h3 className="text-lg font-semibold">Trade Parameters</h3>
         </div>
-        
+
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           <div className="space-y-1">
             <p className="data-label">🟢 Entry Zone</p>
@@ -157,7 +165,7 @@ export const AnalysisResult = ({ data }: AnalysisResultProps) => {
           <Shield className="w-5 h-5 text-accent" />
           <h3 className="text-lg font-semibold">Professional Reasoning</h3>
         </div>
-        <p className="text-muted-foreground leading-relaxed">{data.reasoning}</p>
+        <p className="text-muted-foreground leading-relaxed whitespace-pre-line">{data.reasoning}</p>
       </div>
 
       {/* Invalidation */}
@@ -168,6 +176,29 @@ export const AnalysisResult = ({ data }: AnalysisResultProps) => {
         </div>
         <p className="text-muted-foreground leading-relaxed">{data.invalidation}</p>
       </div>
+
+      {/* Raw Content Accordion */}
+      {data.rawContent && (
+        <div className="glass-card px-6 py-2">
+          <Accordion type="single" collapsible>
+            <AccordionItem value="item-1" className="border-none">
+              <AccordionTrigger className="text-muted-foreground text-sm hover:no-underline hover:text-foreground">
+                <div className="flex items-center gap-2">
+                  <Code className="w-4 h-4" />
+                  View Raw Analysis
+                </div>
+              </AccordionTrigger>
+              <AccordionContent>
+                <div className="bg-muted/50 p-4 rounded-lg mt-2 overflow-x-auto">
+                  <pre className="text-xs text-muted-foreground whitespace-pre-wrap font-mono">
+                    {data.rawContent}
+                  </pre>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
+      )}
     </div>
   );
 };

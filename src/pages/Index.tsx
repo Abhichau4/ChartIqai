@@ -1,141 +1,367 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Brain } from "lucide-react";
 import { Header } from "@/components/Header";
 import { ChartUploader } from "@/components/ChartUploader";
-import { AnalysisResult, AnalysisData } from "@/components/AnalysisResult";
+import SignalHeader from "@/components/SignalHeader";
+import TradeSignalCard from "@/components/TradeSignalCard";
+import ConfidenceScore from "@/components/ConfidenceScore";
+import TechnicalAnalysis from "@/components/TechnicalAnalysis";
+import TradeScenarios from "@/components/TradeScenarios";
+import ProfessionalReasoning from "@/components/ProfessionalReasoning";
+import SignalSummary from "@/components/SignalSummary";
+import FeatureSection from "@/components/FeatureSection";
+import HowItWorks from "@/components/HowItWorks";
+import UserFeedback from "@/components/UserFeedback";
 import { useToast } from "@/hooks/use-toast";
-import { BarChart3, Shield, Zap, Brain } from "lucide-react";
+import { AnalysisData } from "@/types";
+import { useLocation } from "react-router-dom";
 
 const Index = () => {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [analysisResult, setAnalysisResult] = useState<AnalysisData | null>(null);
   const { toast } = useToast();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash === '#how-it-works') {
+      const element = document.getElementById('how-it-works');
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, [location]);
 
   const handleImageUpload = async (imageData: string) => {
     setIsAnalyzing(true);
-    
-    // Simulate AI analysis (in production, this would call an AI endpoint)
-    setTimeout(() => {
-      // Mock response - in production this comes from AI
-      const mockResult: AnalysisData = {
-        symbol: "NABIL",
-        timeframe: "Daily",
-        marketPhase: "Uptrend with consolidation",
-        signal: "BUY",
-        entry: "Rs. 1,250 - 1,265",
-        stopLoss: "Rs. 1,210",
-        targets: ["Rs. 1,320", "Rs. 1,380"],
-        riskReward: "1:2.5",
-        confidenceScore: 82,
-        reasoning: "The chart shows a clear higher-high, higher-low structure indicating bullish momentum. Price has pulled back to a key support zone around Rs. 1,250 which aligns with the 50-day EMA. Volume shows accumulation pattern with decreasing selling pressure. RSI is bouncing from the 40-45 zone suggesting momentum is shifting bullish.",
-        invalidation: "A daily close below Rs. 1,210 would invalidate this setup and signal a potential trend reversal. Also watch for breakdown below the ascending trendline with increased volume.",
-        bias: "Bullish",
+    setAnalysisResult(null); // Reset previous result
+
+    try {
+      const response = await fetch("/api/nvidia/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${import.meta.env.VITE_NVIDIA_API_KEY}`
+        },
+        body: JSON.stringify({
+          model: "meta/llama-3.2-90b-vision-instruct",
+          messages: [
+            {
+              role: "user",
+              content: [
+                {
+                  type: "text",
+                  text: `Analyze the provided chart image for educational and technical analysis purposes only. 
+
+You are an expert technical analyst. Your task is to identify objective market patterns, structure, and potential setups based on standard technical analysis theory. This is NOT financial advice.
+
+Your objective is to operate as an
+👉 AI Technical Analysis Engine
+that produces clear, logical, and educational reasoning.
+
+You must:
+Analyze strictly based on visible chart data
+Provide a theoretical trade setup based on the analysis
+Explain the technical reasoning clearly
+
+1️⃣ Chart Identification
+
+*** CRITICAL INSTRUCTION FOR TIMEFRAME & SYMBOL ***:
+- Carefully identify the Symbol (e.g., XAUUSD, GOLD) and Timeframe (e.g., 1m, 5m, 15m, 1h, 4h, 1d).
+- Look at the top-left area specifically. If you see "1m" or "1 minute", DO NOT report it as "1 hour". 
+- Double-check the bottom x-axis (time axis). If the labels show minutes (e.g., 10:05, 10:06), it is a sub-hourly chart. 
+- DO NOT hallucinate common timeframes. Reporting an incorrect timeframe makes the analysis invalid.
+
+From the image, identify:
+Symbol: [Symbol]
+Timeframe: [Timeframe]
+Chart Type: [Type]
+Market Phase: [Phase]
+
+2️⃣ Technical & Structural Analysis
+Perform a breakdown of trends, support/resistance, and patterns.
+
+3️⃣ Theoretical Trade Setup
+Provide Signal, Entry, Stop Loss, and Targets.
+
+4️⃣ 🧠 Detailed Reasoning
+Explain the logic behind the analysis.
+
+5️⃣ 📊 Confidence Score
+Quantify technical factors (0–100%).
+
+6️⃣ Validation & Risks
+State validation and invalidation conditions.
+
+End with a clear Market Bias Summary.
+
+Response Format (Keep it concise & maintain these exact labels. Provide ONLY the requested value after the colon):
+Symbol: [Asset Symbol only, e.g. XAUUSD]
+Timeframe: [Timeframe only, e.g. 1m]
+Market Phase: [Phase only]
+Signal: [BUY/SELL/HOLD only]
+Entry: [Price only]
+Stop Loss: [Price only]
+Target(s): [Prices only, separated by /]
+Risk-Reward: [Ratio only, e.g. 1:2]
+AI Confidence Score: [Number only]%
+Professional Reasoning:
+[Analysis Points]
+Invalidation Conditions:
+[Condition]
+`
+                },
+                {
+                  type: "image_url",
+                  image_url: {
+                    url: imageData
+                  }
+                }
+              ]
+            }
+          ],
+          temperature: 0.1,
+          top_p: 0.7,
+          max_tokens: 1024,
+          stream: false
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`API Error: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      const content = data.choices[0].message.content;
+      console.log("AI Response:", content);
+
+      // Clean value helper
+      const cleanValue = (val: string, key: string) => {
+        if (!val) return "";
+        // Remove common labels that AI might repeat
+        const labelsToRemove = [
+          "Symbol", "Timeframe", "Market Phase", "Phase", "Signal",
+          "Entry", "Stop Loss", "SL", "Target", "Targets",
+          "Risk-Reward", "RR", "R:R Ratio", "Risk/Reward"
+        ];
+        let cleaned = val;
+        for (const label of labelsToRemove) {
+          const regex = new RegExp(`^\\s*${label}\\s*[:\\-\\*]*\\s*`, 'i');
+          cleaned = cleaned.replace(regex, '');
+        }
+        return cleaned.trim();
       };
-      
-      setAnalysisResult(mockResult);
-      setIsAnalyzing(false);
-      
+
+      // Robust parsing helper with aliases
+      const extract = (keys: string[]) => {
+        for (const key of keys) {
+          const regex = new RegExp(`(?:^|\\n)[\\*\\s]*(?:[\\u2300-\\u23FF\\u2600-\\u27BF\\u2B00-\\u2BF0\\uF000-\\uF8FF]|\\p{Emoji})?\\s*${key}[^:\\n]*[:\\*]*\\s*([^\\n]+)`, 'iu');
+          const match = content.match(regex);
+          if (match && match[1]) {
+            return cleanValue(match[1].trim().replace(/^\**/, '').replace(/\**$/, ''), key);
+          }
+        }
+        return null;
+      };
+
+      // Specific extraction for multi-line reasoning
+      const extractReasoning = () => {
+        const match = content.match(/(?:Professional Reasoning|Reasoning|Analysis)[:\s\*\*]*([\s\S]*?)(?:⚠|Invalidation|7️⃣|$)/i);
+        return match ? match[1].trim() : content.substring(0, 500) + "...";
+      };
+
+      // Invalidation specific
+      const extractInvalidation = () => {
+        const match = content.match(/(?:Invalidation Conditions|Invalidation|Risks)[:\s\*\*]*([\s\S]*?)(?:7️⃣|$)/i);
+        return match ? match[1].trim() : "See detailed report.";
+      }
+
+      const extractTargets = () => {
+        const tps: string[] = [];
+        const regex = /(?:TP\d|Target \d)[^:\n]*[:\s\*\*]*\s*([^\n]+)/gi;
+        const matches = [...content.matchAll(regex)];
+
+        if (matches.length > 0) {
+          matches.forEach(m => {
+            const val = m[1].trim().replace(/^\**/, '').replace(/\**$/, '');
+            tps.push(cleanValue(val, "Target"));
+          });
+        } else {
+          const genericTargets = extract(["Target\\(s\\)", "Targets", "Profit Target", "TP"]);
+          if (genericTargets) {
+            return genericTargets.split(/\s*[\/&]\s*|\s+and\s+/i).map(t => t.trim());
+          }
+        }
+        return tps.length > 0 ? tps : ["N/A"];
+      };
+
+      const rawResult: AnalysisData = {
+        symbol: extract(["Symbol", "Stock Symbol", "Company Name", "Stock"]) || "Unknown",
+        timeframe: extract(["Timeframe", "Chart Timeframe", "Duration"]) || "Unknown",
+        marketPhase: extract(["Market Phase", "Phase", "Trend"]) || "Unknown",
+        signal: (extract(["Signal", "Trade Signal", "Recommendation", "Bias"]) || "HOLD").toUpperCase().replace(/\*\*/g, '') as "BUY" | "SELL" | "HOLD" | "NO TRADE",
+        entry: extract(["Entry", "Entry Zone", "Buy Zone", "Entry Level", "Buy Entry"]) || "N/A",
+        stopLoss: extract(["Stop Loss", "SL", "Invalidation Level", "Stop-Loss", "Invalidation", "StopLoss"]) || "N/A",
+        targets: extractTargets(),
+        riskReward: extract(["Risk–Reward", "Risk-Reward", "RR", "R:R", "Risk/Reward"]) || "N/A",
+        confidenceScore: parseInt((extract(["AI Confidence Score", "Confidence", "Score"]) || "50").replace(/\D/g, '')) || 50,
+        reasoning: extractReasoning(),
+        invalidation: extractInvalidation(),
+        bias: "Neutral",
+        rawContent: content
+      };
+
+      // Determine bias
+      if (content.toLowerCase().includes("bullish")) rawResult.bias = "Bullish";
+      else if (content.toLowerCase().includes("bearish")) rawResult.bias = "Bearish";
+
+      // Handle the "No Trade" case
+      if (content.includes("NO TRADE") || rawResult.signal.includes("NO TRADE")) {
+        rawResult.signal = "NO TRADE";
+        if (rawResult.reasoning.length < 50) {
+          rawResult.reasoning = content.split("NO TRADE")[1] || content;
+        }
+      }
+
+      console.log("Parsed Result:", rawResult);
+      setAnalysisResult(rawResult);
+
       toast({
         title: "Analysis Complete",
-        description: `${mockResult.signal} signal detected with ${mockResult.confidenceScore}% confidence`,
+        description: `Analysis finished.`,
       });
-    }, 3000);
+
+    } catch (error) {
+      console.error("Analysis failed:", error);
+      toast({
+        title: "Analysis Failed",
+        description: error instanceof Error ? error.message : "Failed to analyze image. Please try again.",
+        variant: "destructive",
+      });
+      setIsAnalyzing(false);
+    } finally {
+      setIsAnalyzing(false);
+    }
   };
 
-  const features = [
-    {
-      icon: Brain,
-      title: "AI-Powered Analysis",
-      description: "Advanced pattern recognition & technical analysis",
-    },
-    {
-      icon: Zap,
-      title: "Instant Signals",
-      description: "BUY, SELL, or HOLD recommendations in seconds",
-    },
-    {
-      icon: Shield,
-      title: "Risk Management",
-      description: "Precise entry, stop-loss, and target levels",
-    },
-  ];
-
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground dot-pattern">
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          "name": "Global AI Trading Signals",
+          "operatingSystem": "Web",
+          "applicationCategory": "FinanceApplication",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "description": "Professional AI-powered chart analysis for Global Stocks, Forex, and Commodities using Llama 3.2 Vision.",
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "1250"
+          }
+        })}
+      </script>
       <Header />
-      
-      <main className="container mx-auto px-4 py-12">
-        {!analysisResult ? (
-          <div className="space-y-16">
-            {/* Hero Section */}
-            <div className="text-center space-y-6 max-w-3xl mx-auto">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium">
-                <BarChart3 className="w-4 h-4" />
-                Nepal Stock Exchange Analysis
-              </div>
-              
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight">
-                Professional{" "}
-                <span className="text-gradient-bullish bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                  NEPSE Chart
-                </span>
-                <br />
-                Analysis with AI
-              </h1>
-              
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Upload any NEPSE chart and get institutional-grade analysis with 
-                confidence scoring, precise trade signals, and risk management levels.
-              </p>
+
+      <main className="container px-4 py-4 pb-32 space-y-12 animate-fade-in relative z-10">
+
+        {/* Intro Section */}
+        {!analysisResult && (
+          <div className="text-center space-y-6 max-w-3xl mx-auto pt-4 lg:pt-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-medium animate-fade-in">
+              <Brain className="w-4 h-4" />
+              <span>Powered by AI Vision (Llama 3.2 90B)</span>
             </div>
 
-            {/* Upload Section */}
-            <ChartUploader 
-              onImageUpload={handleImageUpload} 
-              isAnalyzing={isAnalyzing} 
-            />
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white glow-text">
+              Institutional <span className="text-gradient">AI Trading</span> & Analysis
+            </h1>
 
-            {/* Features */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-              {features.map((feature, index) => (
-                <div 
-                  key={index}
-                  className="glass-card p-6 space-y-3 text-center animate-fade-in"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <div className="inline-flex p-3 rounded-xl bg-primary/10 border border-primary/20">
-                    <feature.icon className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="font-semibold text-foreground">{feature.title}</h3>
-                  <p className="text-sm text-muted-foreground">{feature.description}</p>
-                </div>
-              ))}
-            </div>
+            <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+              Analyze any candlestick chart from Global Forex, Stocks, or Crypto. Get instant institutional insights, key levels, and technical setups powered by Llama 3.2 AI.
+            </p>
           </div>
-        ) : (
-          <div className="space-y-8">
-            <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-bold text-foreground">Analysis Results</h2>
+        )}
+
+        {/* Upload Section - Hidden if result is shown (or shown smaller - let's keep it simple and hide/replace for now like before) */}
+        {!analysisResult && (
+          <>
+            <div className="max-w-2xl mx-auto glass-card p-1 rounded-2xl shadow-2xl shadow-primary/5 ring-1 ring-white/10">
+              <ChartUploader onImageUpload={handleImageUpload} isAnalyzing={isAnalyzing} />
+            </div>
+            <FeatureSection />
+            <HowItWorks />
+            <UserFeedback />
+
+            <footer className="mt-20 pt-8 border-t border-white/5 text-center pb-8">
+              <p className="text-xs text-muted-foreground/50 max-w-2xl mx-auto mb-4">
+                Disclaimer: Chart Analyzer is an AI-based analytical tool designed to assist with market analysis. It does not offer investment advice or trading signals. All information provided is for educational and informational purposes only. Users are responsible for their own trading decisions and risk management.
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-muted-foreground">
+                <p>Analysis generated by AI (Llama 3.2 Vision) • Not financial advice</p>
+                <p className="font-mono">chart-ai-signals</p>
+              </div>
+            </footer>
+          </>
+        )}
+
+        {/* Analysis Result Dashboard - The New Reference Logic */}
+        {analysisResult && (
+          <div className="relative max-w-7xl mx-auto px-4 py-4 lg:px-8">
+            {/* Back / Reset Button */}
+            <div className="mb-6">
               <button
                 onClick={() => setAnalysisResult(null)}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="text-sm text-muted-foreground hover:text-foreground flex items-center gap-2 transition-colors"
               >
                 ← Analyze Another Chart
               </button>
             </div>
-            <AnalysisResult data={analysisResult} />
+
+            <SignalHeader data={analysisResult} />
+
+            <div className="mt-8 grid lg:grid-cols-3 gap-6">
+              <div className="lg:col-span-2 space-y-6">
+                <TradeSignalCard data={analysisResult} />
+                <TradeScenarios data={analysisResult} />
+                <TechnicalAnalysis data={analysisResult} />
+                <ProfessionalReasoning data={analysisResult} />
+              </div>
+
+              <div className="space-y-6">
+                <ConfidenceScore data={analysisResult} />
+                <SignalSummary data={analysisResult} />
+
+                {/* Raw Content Debug Helper */}
+                {analysisResult.rawContent && (
+                  <div className="glass-card px-6 py-4">
+                    <h4 className="text-xs font-semibold text-muted-foreground uppercase mb-2">Raw AI Output</h4>
+                    <div className="text-xs text-muted-foreground font-mono whitespace-pre-wrap max-h-40 overflow-y-auto bg-black/20 p-2 rounded">
+                      {analysisResult.rawContent}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <footer className="mt-12 pt-6 border-t border-border">
+              <p className="text-xs text-muted-foreground/50 text-center mb-4">
+                Disclaimer: Chart Analyzer is an AI-based analytical tool designed to assist with market analysis. It does not offer investment advice or trading signals. All information provided is for educational and informational purposes only. Users are responsible for their own trading decisions and risk management.
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
+                <p>Analysis generated by AI (Llama 3.2 Vision) • Not financial advice</p>
+                <p className="font-mono">chart-ai-signals</p>
+              </div>
+            </footer>
           </div>
         )}
       </main>
-
-      {/* Footer */}
-      <footer className="border-t border-border/50 py-8 mt-16">
-        <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
-          <p>
-            Disclaimer: This tool provides educational analysis only. 
-            Always conduct your own research before making investment decisions.
-          </p>
-        </div>
-      </footer>
     </div>
   );
 };

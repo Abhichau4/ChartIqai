@@ -62,9 +62,8 @@ export const ChartUploader = ({ onImageUpload, isAnalyzing }: ChartUploaderProps
     <div className="w-full max-w-2xl mx-auto">
       {!preview ? (
         <div
-          className={`relative glass-card p-8 transition-all duration-300 ${
-            dragActive ? "border-primary glow-bullish" : "hover:border-primary/50"
-          }`}
+          className={`relative glass-card p-8 transition-all duration-300 ${dragActive ? "border-primary glow-bullish" : "hover:border-primary/50"
+            }`}
           onDragEnter={handleDrag}
           onDragLeave={handleDrag}
           onDragOver={handleDrag}
@@ -81,8 +80,8 @@ export const ChartUploader = ({ onImageUpload, isAnalyzing }: ChartUploaderProps
               <Upload className="w-8 h-8 text-primary" />
             </div>
             <div className="text-center space-y-2">
-              <p className="text-lg font-medium text-foreground">
-                Drop your NEPSE chart here
+              <p className="text-xl font-medium text-foreground">
+                Drop your chart here
               </p>
               <p className="text-sm text-muted-foreground">
                 or click to browse • PNG, JPG, WEBP supported
