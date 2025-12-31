@@ -49,7 +49,7 @@ const Index = () => {
           messages: [
             {
               role: "user",
-              content: [
+              co33ntent: [
                 {
                   type: "text",
                   text: `Analyze the provided chart image for educational and technical analysis purposes only. 
@@ -129,10 +129,17 @@ Invalidation Conditions:
       });
 
       if (!response.ok) {
-        throw new Error(`API Error: ${response.statusText}`);
+        const errData = await response.json().catch(() => ({}));
+        throw new Error(errData.detail || `API Error: ${response.status} ${response.statusText}`);
       }
 
       const data = await response.json();
+
+      if (!data.choices || data.choices.length === 0) {
+        console.error("Unexpected API response structure:", data);
+        throw new Error(data.detail || data.error?.message || "AI returned an empty response. Please check your API key and credits.");
+      }
+
       const content = data.choices[0].message.content;
       console.log("AI Response:", content);
 
@@ -251,7 +258,8 @@ Invalidation Conditions:
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "SoftwareApplication",
-          "name": "Global AI Trading Signals",
+          "name": "ChartIQ AI",
+          "alternateName": ["ChartsAI", "ChartSIQ", "ChartIQ", "Chart Analyzer AI"],
           "operatingSystem": "Web",
           "applicationCategory": "FinanceApplication",
           "offers": {
@@ -280,11 +288,11 @@ Invalidation Conditions:
             </div>
 
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white glow-text">
-              Institutional <span className="text-gradient">AI Trading</span> & Analysis
+              ChartIQ AI <span className="text-gradient">Trading Signals</span> & Analysis
             </h1>
 
             <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-              Analyze any candlestick chart from Global Forex, Stocks, or Crypto. Get instant institutional insights, key levels, and technical setups powered by Llama 3.2 AI.
+              Analyze any candlestick chart from Global Forex, Stocks, or Crypto with the #1 <strong>stock analysis AI</strong>. Get instant <strong>AI trading signals</strong>, key levels, and automated technical analysis powered by Llama 3.2 Vision.
             </p>
           </div>
         )}

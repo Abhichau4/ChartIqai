@@ -233,7 +233,7 @@ const LearnSection = ({ onStartLesson }: LearnSectionProps) => {
                     Institutional <span className="text-gradient">Trading Academy</span>
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                    From retail basics to global institutional strategies. Master the world's financial markets with AI-powered interactive lessons.
+                    From retail basics to global institutional strategies. Master the world's financial markets with our <strong>AI-Driven Education</strong> platform and interactive lessons.
                 </p>
             </div>
 

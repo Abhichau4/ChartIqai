@@ -14,12 +14,12 @@ const Learn = () => {
     const learnSchema = {
         "@context": "https://schema.org",
         "@type": "Course",
-        "name": "Global AI Trading Academy",
-        "description": "Professional trading curriculum for international markets including Forex, Stocks, and Commodities.",
+        "name": "ChartIQ AI Trading Course",
+        "description": "Professional trading curriculum for international markets including Forex, Stocks, and Commodities provided by ChartIQ AI (ChartsAI).",
         "provider": {
             "@type": "Organization",
-            "name": "Global AI Trading Signals",
-            "sameAs": "https://nepse-ai-signals.vercel.app/learn"
+            "name": "ChartIQ AI",
+            "sameAs": "https://chartiqai.vercel.app/learn"
         }
     };
 
@@ -65,11 +65,11 @@ const Learn = () => {
                         </div>
 
                         <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white glow-text">
-                            Master Global <span className="text-gradient">Trade</span>
+                            Master Global Markets with <span className="text-gradient">ChartIQ AI</span>
                         </h1>
 
                         <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                            Institutional-grade education for every market. Learn how the world's top traders move capital.
+                            Institutional-grade education for every market. <strong>Learn AI trading</strong> strategies and master <strong>algorithmic trading concepts</strong> with our complete AI-powered curriculum.
                         </p>
                     </div>
                 )}
@@ -95,7 +95,7 @@ const Learn = () => {
 
             <footer className="mt-10 pt-8 border-t border-white/5 text-center pb-8 bg-background/80 backdrop-blur-sm">
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-xs text-muted-foreground">
-                    <p>© 2025 Global AI Academy • Educational purposes only</p>
+                    <p>© 2025 Chart Analyzer Ai • Educational purposes only</p>
                     <p className="font-mono">nepse-ai-signals</p>
                 </div>
             </footer>

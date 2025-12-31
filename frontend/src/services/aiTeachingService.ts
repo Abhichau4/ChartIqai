@@ -21,7 +21,7 @@ export const analyzeChartWithVision = async (imageBuffer: string, query: string 
             Authorization: `Bearer ${NVIDIA_API_KEY}`,
         },
         body: JSON.stringify({
-            model: "meta/llama-3.2-90b-vision-instruct",
+            model: "meta/llama-3.2-11b-vision-instruct",
             messages: [
                 {
                     role: "system",
@@ -47,6 +47,11 @@ export const analyzeChartWithVision = async (imageBuffer: string, query: string 
     }
 
     const data: ChatCompletionResponse = await response.json();
+
+    if (!data.choices || data.choices.length === 0) {
+        throw new Error("AI returned an empty response. Please check your API key and connection.");
+    }
+
     return data.choices[0].message.content;
 };
 
@@ -111,5 +116,10 @@ ${context ? `Active Lesson Curriculum: ${context}` : ""}`;
     }
 
     const data: ChatCompletionResponse = await response.json();
+
+    if (!data.choices || data.choices.length === 0) {
+        throw new Error("AI returned an empty response. Please check your API key and connection.");
+    }
+
     return data.choices[0].message.content;
 };

@@ -51,7 +51,7 @@ export const Header = () => {
           </div>
           <div>
             <h1 className="text-lg sm:text-xl font-bold text-foreground tracking-tight leading-tight">
-              Global AI Academy
+              Chart Analyzer Ai
             </h1>
             <p className="hidden xs:block text-[10px] sm:text-xs text-muted-foreground">
               Institutional Trading & Analysis
