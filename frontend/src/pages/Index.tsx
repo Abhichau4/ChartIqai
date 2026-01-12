@@ -272,7 +272,78 @@ Invalidation Conditions:
             "@type": "AggregateRating",
             "ratingValue": "4.9",
             "reviewCount": "1250"
-          }
+          },
+          "featureList": [
+            "AI-powered chart analysis",
+            "Real-time trading signals",
+            "Automated technical analysis",
+            "Support for Forex, Stocks, and Crypto",
+            "Pattern recognition",
+            "Risk management calculations"
+          ],
+          "screenshot": "https://chartiqai.vercel.app/og-image.png"
+        })}
+      </script>
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "ChartIQ AI",
+          "url": "https://chartiqai.vercel.app",
+          "logo": "https://chartiqai.vercel.app/brain.png",
+          "description": "AI-powered trading signals and chart analysis platform for Forex, Stocks, and Crypto markets.",
+          "sameAs": [
+            "https://twitter.com/ChartIQAI",
+            "https://github.com/Abhichau4"
+          ]
+        })}
+      </script>
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is ChartIQ AI?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "ChartIQ AI is an advanced AI-powered chart analysis platform that provides real-time trading signals and automated technical analysis for Forex, Stocks, and Cryptocurrency markets using Llama 3.2 Vision AI technology."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does AI chart analysis work?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Our AI uses advanced computer vision (Llama 3.2 90B Vision) to analyze candlestick charts, identify patterns, detect support and resistance levels, and generate trading signals with confidence scores and risk-reward ratios."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is ChartIQ AI free to use?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, ChartIQ AI offers free AI-powered chart analysis and trading signals. Simply upload your chart image and receive instant AI analysis."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What markets does ChartIQ AI support?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "ChartIQ AI supports analysis for all major markets including Forex (currency pairs), Stocks (global equities), Cryptocurrencies, Commodities (Gold, Oil, etc.), and CFDs."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How accurate are the AI trading signals?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Our AI provides confidence scores with each signal (0-100%). While our technology is highly advanced, all analysis is for educational purposes only and should not be considered financial advice. Always conduct your own research and risk management."
+              }
+            }
+          ]
         })}
       </script>
       <Header />
