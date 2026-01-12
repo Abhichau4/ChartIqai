@@ -17,16 +17,28 @@ const FAQSection = () => {
             answer: "Our AI uses advanced computer vision (Llama 3.2 90B Vision) to analyze candlestick charts, identify patterns, detect support and resistance levels, and generate trading signals with confidence scores and risk-reward ratios."
         },
         {
+            question: "How accurate is AI for chart analysis?",
+            answer: "AI chart analysis accuracy depends on chart quality and market conditions. Our system provides confidence scores (0-100%) with each signal. While AI excels at pattern recognition and data analysis, all signals should be verified with your own research and risk management strategy."
+        },
+        {
+            question: "Can AI predict forex market movements?",
+            answer: "AI cannot predict markets with certainty, but it can identify high-probability patterns and trends in forex charts based on historical data and technical indicators. Our AI provides probability-based signals rather than guaranteed predictions."
+        },
+        {
             question: "Is ChartIQ AI free to use?",
-            answer: "Yes, ChartIQ AI offers free AI-powered chart analysis and trading signals. Simply upload your chart image and receive instant AI analysis."
+            answer: "Yes, ChartIQ AI offers free AI-powered chart analysis and trading signals. Simply upload your chart image and receive instant AI analysis with no registration required."
         },
         {
             question: "What markets does ChartIQ AI support?",
-            answer: "ChartIQ AI supports analysis for all major markets including Forex (currency pairs), Stocks (global equities), Cryptocurrencies, Commodities (Gold, Oil, etc.), and CFDs."
+            answer: "ChartIQ AI supports analysis for all major markets including Forex (currency pairs), Stocks (global equities), Cryptocurrencies, Commodities (Gold, Oil, etc.), and CFDs. Any candlestick chart format is supported."
         },
         {
             question: "How accurate are the AI trading signals?",
             answer: "Our AI provides confidence scores with each signal (0-100%). While our technology is highly advanced, all analysis is for educational purposes only and should not be considered financial advice. Always conduct your own research and risk management."
+        },
+        {
+            question: "What is automated technical analysis?",
+            answer: "Automated technical analysis uses machine learning algorithms to instantly identify chart patterns, calculate technical indicators (RSI, MACD, Bollinger Bands), detect support/resistance levels, and generate trading signals without manual analysis."
         }
     ];
 

@@ -322,10 +322,26 @@ Invalidation Conditions:
             },
             {
               "@type": "Question",
+              "name": "How accurate is AI for chart analysis?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "AI chart analysis accuracy depends on chart quality and market conditions. Our system provides confidence scores (0-100%) with each signal. While AI excels at pattern recognition and data analysis, all signals should be verified with your own research and risk management strategy."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can AI predict forex market movements?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "AI cannot predict markets with certainty, but it can identify high-probability patterns and trends in forex charts based on historical data and technical indicators. Our AI provides probability-based signals rather than guaranteed predictions."
+              }
+            },
+            {
+              "@type": "Question",
               "name": "Is ChartIQ AI free to use?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Yes, ChartIQ AI offers free AI-powered chart analysis and trading signals. Simply upload your chart image and receive instant AI analysis."
+                "text": "Yes, ChartIQ AI offers free AI-powered chart analysis and trading signals. Simply upload your chart image and receive instant AI analysis with no registration required."
               }
             },
             {
@@ -333,7 +349,7 @@ Invalidation Conditions:
               "name": "What markets does ChartIQ AI support?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "ChartIQ AI supports analysis for all major markets including Forex (currency pairs), Stocks (global equities), Cryptocurrencies, Commodities (Gold, Oil, etc.), and CFDs."
+                "text": "ChartIQ AI supports analysis for all major markets including Forex (currency pairs), Stocks (global equities), Cryptocurrencies, Commodities (Gold, Oil, etc.), and CFDs. Any candlestick chart format is supported."
               }
             },
             {
@@ -342,6 +358,14 @@ Invalidation Conditions:
               "acceptedAnswer": {
                 "@type": "Answer",
                 "text": "Our AI provides confidence scores with each signal (0-100%). While our technology is highly advanced, all analysis is for educational purposes only and should not be considered financial advice. Always conduct your own research and risk management."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is automated technical analysis?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Automated technical analysis uses machine learning algorithms to instantly identify chart patterns, calculate technical indicators (RSI, MACD, Bollinger Bands), detect support/resistance levels, and generate trading signals without manual analysis."
               }
             }
           ]
@@ -360,11 +384,11 @@ Invalidation Conditions:
             </div>
 
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white glow-text">
-              ChartIQ AI <span className="text-gradient">Trading Signals</span> & Analysis
+              AI Chart Analysis & <span className="text-gradient">Automated Trading Signals</span> for Forex, Stocks & Crypto
             </h1>
 
             <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-              Analyze any candlestick chart from Global Forex, Stocks, or Crypto with the #1 <strong>stock analysis AI</strong>. Get instant <strong>AI trading signals</strong>, key levels, and automated technical analysis powered by Llama 3.2 Vision.
+              Analyze any candlestick chart from Forex, Stocks, or Crypto with our <strong>AI-powered chart pattern recognition</strong>. Get instant <strong>automated technical analysis</strong>, AI trading signals, key support/resistance levels powered by Llama 3.2 Vision. Free machine learning-based chart analyzer.
             </p>
           </div>
         )}
