@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Header } from '@/components/Header';
 import LearnSection from '@/components/LearnSection';
 import ChatInterface from '@/components/ChatInterface';
@@ -7,6 +7,20 @@ import { cn } from '@/lib/utils';
 import { GraduationCap, ArrowLeft } from 'lucide-react';
 
 const Learn = () => {
+    // Set page title and meta for SEO
+    useEffect(() => {
+        document.title = "Learn AI Trading & Chart Analysis | Free Trading Academy - ChartIQ AI";
+
+        // Update or create meta description
+        let metaDescription = document.querySelector('meta[name="description"]');
+        if (!metaDescription) {
+            metaDescription = document.createElement('meta');
+            metaDescription.setAttribute('name', 'description');
+            document.head.appendChild(metaDescription);
+        }
+        metaDescription.setAttribute('content', 'Free AI trading academy. Learn chart analysis, technical indicators, and algorithmic trading strategies with AI-powered lessons. Master forex, stocks, and crypto trading with interactive courses.');
+    }, []);
+
     const [activeTab, setActiveTab] = useState<'grid' | 'chat'>('grid');
     const [messages, setMessages] = useState<Message[]>([]);
     const [selectedLesson, setSelectedLesson] = useState<Lesson | null>(null);
@@ -85,7 +99,7 @@ const Learn = () => {
                         </div>
 
                         <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white glow-text">
-                            Master Global Markets with <span className="text-gradient">ChartIQ AI</span>
+                            Master <span className="text-gradient">AI Trading</span> & Chart Analysis
                         </h1>
 
                         <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
