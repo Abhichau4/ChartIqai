@@ -10,6 +10,7 @@ import TradeScenarios from "@/components/TradeScenarios";
 import ProfessionalReasoning from "@/components/ProfessionalReasoning";
 import SignalSummary from "@/components/SignalSummary";
 import FeatureSection from "@/components/FeatureSection";
+import FAQSection from "@/components/FAQSection";
 import HowItWorks from "@/components/HowItWorks";
 import UserFeedback from "@/components/UserFeedback";
 import { useToast } from "@/hooks/use-toast";
@@ -376,6 +377,7 @@ Invalidation Conditions:
             </div>
             <FeatureSection />
             <HowItWorks />
+            <FAQSection />
             <UserFeedback />
 
             <footer className="mt-20 pt-8 border-t border-white/5 text-center pb-8">
