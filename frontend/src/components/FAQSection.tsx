@@ -80,19 +80,7 @@ const FAQSection = () => {
                 </Accordion>
             </div>
 
-            <div className="mt-8 text-center">
-                <p className="text-sm text-muted-foreground">
-                    Have more questions?{" "}
-                    <a
-                        href="https://github.com/Abhichau4/ChartIqai/issues"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-primary hover:text-primary/80 underline transition-colors"
-                    >
-                        Contact us on GitHub
-                    </a>
-                </p>
-            </div>
+
         </section>
     );
 };
