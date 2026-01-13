@@ -1,33 +1,5 @@
 {
     "version": 2,
-    "rewrites": [
-        {
-            "source": "/api/(.*)",
-            "destination": "api/completions.py"
-        },
-        {
-            "source": "/google2256de06fae5cd8e.html",
-            "destination": "frontend/google2256de06fae5cd8e.html"
-        }
-    ],
-    "routes": [
-        {
-            "src": "/api/(.*)",
-            "dest": "api/completions.py"
-        },
-        {
-            "src": "/sitemap.xml",
-            "dest": "/sitemap.xml"
-        },
-        {
-            "src": "/robots.txt",
-            "dest": "/robots.txt"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/index.html"
-        }
-    ],
     "builds": [
         {
             "src": "api/completions.py",
@@ -39,6 +11,20 @@
             "config": {
                 "distDir": "dist"
             }
+        }
+    ],
+    "rewrites": [
+        {
+            "source": "/api/(.*)",
+            "destination": "api/completions.py"
+        },
+        {
+            "source": "/google2256de06fae5cd8e.html",
+            "destination": "frontend/google2256de06fae5cd8e.html"
+        },
+        {
+            "source": "/(.*)",
+            "destination": "/index.html"
         }
     ]
 }
