@@ -387,8 +387,8 @@ Invalidation Conditions:
               AI Chart Analysis & <span className="text-gradient">Automated Trading Signals</span> for Forex, Stocks, Crypto & Bitcoin 2026
             </h1>
 
-            <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-              Analyze any <strong>Forex</strong>, <strong>Crypto</strong>, <strong>Bitcoin</strong>, or <strong>Stock candlestick chart</strong> with our <strong>free AI-powered chart analyzer</strong>, delivering instant <strong>technical analysis</strong>, <strong>AI trading signals</strong>, and key support & resistance levels, powered by Llama 3.2 Vision for accurate, <strong>machine-learning-driven trading insights</strong>.
+            <p className="text-lg md:text-xl font-medium text-muted-foreground/90 leading-loose max-w-3xl mx-auto">
+              Analyze any <strong className="text-white font-semibold">Forex</strong>, <strong className="text-white font-semibold">Crypto</strong>, <strong className="text-white font-semibold">Bitcoin</strong>, or <strong className="text-white font-semibold">Stock candlestick chart</strong> with our <strong className="text-white font-semibold">free AI-powered chart analyzer</strong>, delivering instant <strong className="text-white font-semibold">technical analysis</strong>, <strong className="text-white font-semibold">AI trading signals</strong>, and key support & resistance levels, powered by Llama 3.2 Vision for accurate, <strong className="text-white font-semibold">machine-learning-driven trading insights</strong>.
             </p>
           </div>
         )}
