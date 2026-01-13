@@ -18,7 +18,7 @@ const Learn = () => {
             metaDescription.setAttribute('name', 'description');
             document.head.appendChild(metaDescription);
         }
-        metaDescription.setAttribute('content', 'Free AI trading academy. Master AI trading strategies, automated technical analysis, chart pattern recognition, and algorithmic trading. Learn forex, stocks, and crypto trading with AI-powered interactive courses. Machine learning trading education for beginners to advanced traders.');
+        metaDescription.setAttribute('content', 'Free AI trading academy. Master AI trading strategies, automated technical analysis, chart pattern recognition, and algorithmic trading. Learn forex trading, stock market investing, cryptocurrency trading, and Bitcoin analysis with AI-powered interactive courses. Machine learning trading education for beginners to advanced traders worldwide.');
     }, []);
 
     const [activeTab, setActiveTab] = useState<'grid' | 'chat'>('grid');

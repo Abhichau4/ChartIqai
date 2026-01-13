@@ -14,7 +14,7 @@ const Charts = () => {
             metaDescription.setAttribute('name', 'description');
             document.head.appendChild(metaDescription);
         }
-        metaDescription.setAttribute('content', 'Professional live trading charts with AI-powered technical analysis for forex, stocks, and cryptocurrency markets. Real-time price action analysis, chart patterns, and trading signals. Free TradingView integration.');
+        metaDescription.setAttribute('content', 'Professional live trading charts with AI-powered technical analysis for forex, stocks, cryptocurrency, and Bitcoin markets. Real-time price action analysis, chart patterns, and trading signals. Free TradingView integration for global traders and investors.');
 
         // Add meta keywords
         let metaKeywords = document.querySelector('meta[name="keywords"]');
@@ -23,7 +23,7 @@ const Charts = () => {
             metaKeywords.setAttribute('name', 'keywords');
             document.head.appendChild(metaKeywords);
         }
-        metaKeywords.setAttribute('content', 'live trading charts, real-time chart analysis, forex charts, crypto charts, stock charts, TradingView integration, live price action, real-time technical analysis');
+        metaKeywords.setAttribute('content', 'live trading charts, real-time chart analysis, forex charts, crypto charts, stock charts, Bitcoin charts, cryptocurrency trading, TradingView integration, live price action, real-time technical analysis, stock market charts, trading view');
     }, []);
 
     return (

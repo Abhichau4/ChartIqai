@@ -384,11 +384,11 @@ Invalidation Conditions:
             </div>
 
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white glow-text">
-              AI Chart Analysis & <span className="text-gradient">Automated Trading Signals</span> for Forex, Stocks & Crypto 2026
+              AI Chart Analysis & <span className="text-gradient">Automated Trading Signals</span> for Forex, Stocks, Crypto & Bitcoin 2026
             </h1>
 
             <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-              Analyze any candlestick chart from Forex, Stocks, or Crypto with our <strong>AI-powered chart pattern recognition</strong>. Get instant <strong>automated technical analysis</strong>, <strong>AI trading signals</strong>, key support/resistance levels powered by Llama 3.2 Vision. Free <strong>machine learning-based chart analyzer</strong> with <strong>algorithmic trading insights</strong>.
+              Analyze any candlestick chart from <strong>Forex</strong>, <strong>Stocks</strong>, <strong>Cryptocurrency</strong>, or <strong>Bitcoin</strong> with our <strong>AI-powered chart pattern recognition</strong>. Get instant <strong>automated technical analysis</strong>, <strong>AI trading signals</strong>, key support/resistance levels powered by Llama 3.2 Vision. Free <strong>machine learning-based chart analyzer</strong> with <strong>algorithmic trading insights</strong> for global investors.
             </p>
           </div>
         )}
