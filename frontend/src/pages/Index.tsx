@@ -388,7 +388,7 @@ Invalidation Conditions:
             </h1>
 
             <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-              Analyze any candlestick chart from <strong>Forex</strong>, <strong>Stocks</strong>, <strong>Cryptocurrency</strong>, or <strong>Bitcoin</strong> with our <strong>AI-powered chart pattern recognition</strong>. Get instant <strong>automated technical analysis</strong>, <strong>AI trading signals</strong>, key support/resistance levels powered by Llama 3.2 Vision. Free <strong>machine learning-based chart analyzer</strong> with <strong>algorithmic trading insights</strong> for global investors.
+              Analyze any <strong>Forex</strong>, <strong>Crypto</strong>, <strong>Bitcoin</strong>, or <strong>Stock candlestick chart</strong> with our <strong>free AI-powered chart analyzer</strong>, delivering instant <strong>technical analysis</strong>, <strong>AI trading signals</strong>, and key support & resistance levels, powered by Llama 3.2 Vision for accurate, <strong>machine-learning-driven trading insights</strong>.
             </p>
           </div>
         )}
