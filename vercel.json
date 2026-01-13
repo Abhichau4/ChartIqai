@@ -8,10 +8,24 @@
         {
             "source": "/google2256de06fae5cd8e.html",
             "destination": "frontend/google2256de06fae5cd8e.html"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/api/(.*)",
+            "dest": "api/completions.py"
         },
         {
-            "source": "/(.*)",
-            "destination": "frontend/$1"
+            "src": "/sitemap.xml",
+            "dest": "/sitemap.xml"
+        },
+        {
+            "src": "/robots.txt",
+            "dest": "/robots.txt"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/index.html"
         }
     ],
     "builds": [
