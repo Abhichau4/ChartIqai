@@ -28,6 +28,9 @@ async def nvidia_completions(request: Request):
             api_key = os.getenv("NVIDIA_API_KEY") or os.getenv("VITE_NVIDIA_API_KEY")
             if api_key:
                 auth_header = f"Bearer {api_key.strip()}"
+            else:
+                # Critical: No key found in headers OR environment
+                raise HTTPException(status_code=500, detail="Server misconfiguration: NVIDIA API Key missing. Please check Vercel environment variables.")
         
         headers = {
             "Authorization": auth_header,
