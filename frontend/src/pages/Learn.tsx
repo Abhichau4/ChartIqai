@@ -91,22 +91,7 @@ const Learn = () => {
                 )}
 
                 {/* Hero Section - Hidden in chat mode */}
-                {activeTab === 'grid' && (
-                    <div className="text-center space-y-4 max-w-3xl mx-auto pt-4 lg:pt-8 bg-black/20 pb-10">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium animate-fade-in">
-                            <GraduationCap className="w-4 h-4" />
-                            <span>Global Masterclass</span>
-                        </div>
 
-                        <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white glow-text">
-                            Master <span className="text-gradient">AI Trading Strategies</span> & Technical Analysis
-                        </h1>
-
-                        <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                            Learn <strong>AI trading strategies</strong>, <strong>automated technical analysis</strong>, and <strong>chart pattern recognition</strong> with our complete AI-powered curriculum. Master <strong>algorithmic trading</strong> for forex, stocks, and crypto markets.
-                        </p>
-                    </div>
-                )}
 
                 <div className={cn(
                     "transition-all duration-500",
