@@ -15,6 +15,7 @@ export const Header = () => {
       <Link
         to="/learn"
         onClick={() => setIsOpen(false)}
+        title="AI Trading Education & Courses - Learn algorithmic trading strategies"
         className={`${mobile ? 'text-lg py-4' : 'text-sm'} font-medium text-muted-foreground hover:text-white transition-colors`}
       >
         Learn
@@ -22,6 +23,7 @@ export const Header = () => {
       <Link
         to="/charts"
         onClick={() => setIsOpen(false)}
+        title="Live Trading Charts & Real-Time Analysis - View forex, stocks, crypto charts"
         className={`${mobile ? 'text-lg py-4' : 'text-sm'} font-medium text-muted-foreground hover:text-white transition-colors`}
       >
         Charts
@@ -35,6 +37,7 @@ export const Header = () => {
             navigate('/#how-it-works');
           }
         }}
+        title="How AI Chart Analysis Works - Learn about our technology"
         className={`${mobile ? 'text-lg py-4 text-left' : 'text-sm'} font-medium text-muted-foreground hover:text-white transition-colors`}
       >
         How It Works

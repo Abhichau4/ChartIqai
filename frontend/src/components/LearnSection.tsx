@@ -11,7 +11,7 @@ const LearnSection = ({ onStartLesson }: LearnSectionProps) => {
         {
             id: 1,
             title: 'Introduction to Forex Trading',
-            icon: <DollarSign className="w-6 h-6" />,
+            icon: <DollarSign className="w-6 h-6" aria-label="Forex trading course icon - Learn currency pairs and foreign exchange market fundamentals" />,
             level: 'Beginner',
             duration: '15 min',
             description: 'Start your trading journey by understanding the fundamentals of the foreign exchange market.',
@@ -20,7 +20,7 @@ const LearnSection = ({ onStartLesson }: LearnSectionProps) => {
         {
             id: 2,
             title: 'Candlestick Patterns',
-            icon: <BarChart3 className="w-6 h-6" />,
+            icon: <BarChart3 className="w-6 h-6" aria-label="Candlestick patterns course icon - Master price action and chart patterns" />,
             level: 'Beginner',
             duration: '20 min',
             description: 'Master the art of reading price action through candlestick patterns and formations.',
@@ -29,7 +29,7 @@ const LearnSection = ({ onStartLesson }: LearnSectionProps) => {
         {
             id: 3,
             title: 'Support & Resistance',
-            icon: <TrendingUp className="w-6 h-6" />,
+            icon: <TrendingUp className="w-6 h-6" aria-label="Support and resistance course icon - Learn key price levels and breakout trading" />,
             level: 'Intermediate',
             duration: '25 min',
             description: 'Learn to identify key price levels where markets tend to reverse or break through.',
@@ -38,7 +38,7 @@ const LearnSection = ({ onStartLesson }: LearnSectionProps) => {
         {
             id: 4,
             title: 'Risk Management',
-            icon: <Brain className="w-6 h-6" />,
+            icon: <Brain className="w-6 h-6" aria-label="Risk management course icon - Essential trading psychology and capital protection" />,
             level: 'Essential',
             duration: '30 min',
             description: 'The most important skill in trading - protect your capital and survive to trade another day.',
@@ -47,7 +47,7 @@ const LearnSection = ({ onStartLesson }: LearnSectionProps) => {
         {
             id: 5,
             title: 'Technical Indicators',
-            icon: <LineChart className="w-6 h-6" />,
+            icon: <LineChart className="w-6 h-6" aria-label="Technical indicators course icon - Master RSI, MACD, moving averages, Bollinger Bands" />,
             level: 'Intermediate',
             duration: '35 min',
             description: 'Understand how indicators work and when to use them for better trading decisions.',
@@ -56,7 +56,7 @@ const LearnSection = ({ onStartLesson }: LearnSectionProps) => {
         {
             id: 6,
             title: 'Chart Patterns',
-            icon: <Layers className="w-6 h-6" />,
+            icon: <Layers className="w-6 h-6" aria-label="Chart patterns course icon - Learn head and shoulders, triangles, flags and pennants" />,
             level: 'Intermediate',
             duration: '30 min',
             description: 'Recognize recurring patterns that can signal future price movements.',
@@ -230,10 +230,10 @@ const LearnSection = ({ onStartLesson }: LearnSectionProps) => {
         <section className="max-w-7xl mx-auto animate-fade-in space-y-12" aria-labelledby="academy-title">
             <div className="text-center space-y-4">
                 <h2 id="academy-title" className="text-3xl md:text-5xl font-bold tracking-tight text-white glow-text">
-                    Institutional <span className="text-gradient">Trading Academy</span>
+                    Master <span className="text-gradient">AI-Powered Trading Strategies</span> & Technical Analysis
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                    From retail basics to global institutional strategies. Master the world's financial markets with our <strong>AI-Driven Education</strong> platform and interactive lessons.
+                    Learn <strong>algorithmic trading</strong>, <strong>chart pattern recognition</strong>, and <strong>automated technical analysis</strong> with our AI-driven education platform. From beginner fundamentals to institutional strategies.
                 </p>
             </div>
 

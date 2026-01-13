@@ -9,7 +9,7 @@ import { GraduationCap, ArrowLeft } from 'lucide-react';
 const Learn = () => {
     // Set page title and meta for SEO
     useEffect(() => {
-        document.title = "Learn AI Trading & Chart Analysis | Free Trading Academy - ChartIQ AI";
+        document.title = "Learn AI Trading Strategies, Technical Analysis & Chart Patterns | Free Trading Academy - ChartIQ AI";
 
         // Update or create meta description
         let metaDescription = document.querySelector('meta[name="description"]');
@@ -18,7 +18,7 @@ const Learn = () => {
             metaDescription.setAttribute('name', 'description');
             document.head.appendChild(metaDescription);
         }
-        metaDescription.setAttribute('content', 'Free AI trading academy. Learn chart analysis, technical indicators, and algorithmic trading strategies with AI-powered lessons. Master forex, stocks, and crypto trading with interactive courses.');
+        metaDescription.setAttribute('content', 'Free AI trading academy. Master AI trading strategies, automated technical analysis, chart pattern recognition, and algorithmic trading. Learn forex, stocks, and crypto trading with AI-powered interactive courses. Machine learning trading education for beginners to advanced traders.');
     }, []);
 
     const [activeTab, setActiveTab] = useState<'grid' | 'chat'>('grid');
@@ -28,8 +28,8 @@ const Learn = () => {
     const learnSchema = {
         "@context": "https://schema.org",
         "@type": "Course",
-        "name": "ChartIQ AI Trading Course",
-        "description": "Professional trading curriculum for international markets including Forex, Stocks, and Commodities provided by ChartIQ AI (ChartsAI).",
+        "name": "ChartIQ AI Trading Course - AI-Powered Technical Analysis & Trading Strategies",
+        "description": "Comprehensive AI trading course covering automated technical analysis, chart pattern recognition, algorithmic trading strategies for Forex, Stocks, and Commodities. Learn machine learning trading and AI-powered market analysis provided by ChartIQ AI (ChartsAI).",
         "provider": {
             "@type": "Organization",
             "name": "ChartIQ AI",
@@ -99,11 +99,11 @@ const Learn = () => {
                         </div>
 
                         <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white glow-text">
-                            Master <span className="text-gradient">AI Trading</span> & Chart Analysis
+                            Master <span className="text-gradient">AI Trading Strategies</span> & Technical Analysis
                         </h1>
 
                         <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                            Institutional-grade education for every market. <strong>Learn AI trading</strong> strategies and master <strong>algorithmic trading concepts</strong> with our complete AI-powered curriculum.
+                            Learn <strong>AI trading strategies</strong>, <strong>automated technical analysis</strong>, and <strong>chart pattern recognition</strong> with our complete AI-powered curriculum. Master <strong>algorithmic trading</strong> for forex, stocks, and crypto markets.
                         </p>
                     </div>
                 )}
