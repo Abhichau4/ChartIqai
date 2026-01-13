@@ -25,7 +25,8 @@ async def nvidia_completions(request: Request):
         # Try to get API key from header, fallback to environment variable
         auth_header = request.headers.get("Authorization")
         if not auth_header or "undefined" in auth_header:
-            api_key = os.getenv("NVIDIA_API_KEY") or os.getenv("VITE_NVIDIA_API_KEY")
+            # Fallback to hardcoded key if env var is missing (User Request)
+            api_key = os.getenv("NVIDIA_API_KEY") or "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"
             if api_key:
                 auth_header = f"Bearer {api_key.strip()}"
             else:
