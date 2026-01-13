@@ -43,8 +43,8 @@ const Index = () => {
       const response = await fetch("/api/nvidia/chat/completions", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${import.meta.env.VITE_NVIDIA_API_KEY}`
+          "Content-Type": "application/json"
+          // Authorization handled by backend proxy
         },
         body: JSON.stringify({
           model: "meta/llama-3.2-90b-vision-instruct",

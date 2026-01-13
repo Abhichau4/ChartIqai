@@ -10,15 +10,11 @@ interface ChatCompletionResponse {
 }
 
 export const analyzeChartWithVision = async (imageBuffer: string, query: string = "Analyze this chart's technical patterns, support, and resistance levels.") => {
-    if (!NVIDIA_API_KEY) {
-        throw new Error("NVIDIA API Key not configured.");
-    }
-
     const response = await fetch(`${NVIDIA_API_URL}/chat/completions`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${NVIDIA_API_KEY}`,
+            // Authorization handled by backend
         },
         body: JSON.stringify({
             model: "meta/llama-3.2-11b-vision-instruct",
@@ -56,10 +52,6 @@ export const analyzeChartWithVision = async (imageBuffer: string, query: string 
 };
 
 export const getDeepSeekTeaching = async (query: string, context: string = "", history: { role: "user" | "assistant", content: string }[] = []) => {
-    if (!NVIDIA_API_KEY) {
-        throw new Error("NVIDIA API Key not configured.");
-    }
-
     const systemPrompt = `You are a helpful friend teaching a complete beginner.
 - **Goal**: Teach the lesson topics in order. 
 - **Style**: Simple, human language. No complex jargon.
@@ -99,7 +91,7 @@ ${context ? `Active Lesson Curriculum: ${context}` : ""}`;
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${NVIDIA_API_KEY}`,
+            // Authorization handled by backend
         },
         body: JSON.stringify({
             model: "meta/llama-3.3-70b-instruct",
