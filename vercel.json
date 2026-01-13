@@ -23,8 +23,12 @@
             "destination": "frontend/google2256de06fae5cd8e.html"
         },
         {
+            "source": "/(learn|charts|login|signup)",
+            "destination": "frontend/index.html"
+        },
+        {
             "source": "/(.*)",
-            "destination": "/index.html"
+            "destination": "frontend/$1"
         }
     ]
 }
