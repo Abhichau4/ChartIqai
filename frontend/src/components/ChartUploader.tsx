@@ -71,8 +71,11 @@ export const ChartUploader = ({ onImageUpload, isAnalyzing }: ChartUploaderProps
         >
           <input
             type="file"
+            id="chart-upload-input"
+            name="chart-image"
             accept="image/*"
             onChange={handleChange}
+            aria-label="Upload trading chart image"
             className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
           />
           <div className="flex flex-col items-center justify-center py-12 space-y-4">
@@ -98,11 +101,12 @@ export const ChartUploader = ({ onImageUpload, isAnalyzing }: ChartUploaderProps
           <div className="relative group">
             <img
               src={preview}
-              alt="Chart preview"
+              alt="Trading chart preview - ready for AI analysis"
               className="w-full rounded-lg border border-border"
             />
             <button
               onClick={clearPreview}
+              aria-label="Remove chart image"
               className="absolute top-3 right-3 p-2 rounded-lg bg-background/80 backdrop-blur-sm border border-border hover:bg-destructive/20 hover:border-destructive/50 transition-all"
             >
               <X className="w-4 h-4" />

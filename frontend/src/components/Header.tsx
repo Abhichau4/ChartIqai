@@ -80,7 +80,7 @@ export const Header = () => {
               <div className="flex items-center gap-2 sm:gap-4 animate-fade-in">
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-500 font-bold overflow-hidden">
-                    {user.avatar ? <img src={user.avatar} alt={user.name} /> : <User className="w-4 h-4 sm:w-5 sm:h-5" />}
+                    {user.avatar ? <img src={user.avatar} alt={`${user.name} profile picture`} /> : <User className="w-4 h-4 sm:w-5 sm:h-5" />}
                   </div>
                   <div className="hidden lg:block">
                     <p className="font-medium text-foreground text-sm">{user.name}</p>
