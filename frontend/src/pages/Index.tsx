@@ -20,7 +20,6 @@ const FeatureSection = lazy(() => import("@/components/FeatureSection"));
 const FAQSection = lazy(() => import("@/components/FAQSection"));
 const HowItWorks = lazy(() => import("@/components/HowItWorks"));
 const UserFeedback = lazy(() => import("@/components/UserFeedback"));
-const TradingContentSection = lazy(() => import("@/components/TradingContentSection"));
 
 const Index = () => {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
@@ -411,7 +410,6 @@ Invalidation Conditions:
                 <HowItWorks />
             </Suspense>
             <Suspense fallback={null}>
-                <TradingContentSection />
                 <FAQSection />
                 <UserFeedback />
             </Suspense>
