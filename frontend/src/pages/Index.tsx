@@ -29,6 +29,17 @@ const Index = () => {
   const location = useLocation();
 
   useEffect(() => {
+    // Dynamic SEO Metadata
+    document.title = "AI Trading Signals & Chart Analysis | Free Forex, Stock & Crypto AI - ChartIQ";
+    
+    // Update meta description
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Get free AI trading signals and professional chart analysis. Our AI-powered platform provides automated technical analysis, pattern recognition, and setup signals for Forex, Stocks, and Crypto.');
+    }
+  }, []);
+
+  useEffect(() => {
     if (location.hash === '#how-it-works') {
       const element = document.getElementById('how-it-works');
       if (element) {
