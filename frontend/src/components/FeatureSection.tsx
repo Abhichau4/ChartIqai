@@ -9,7 +9,7 @@ const FeatureSection = () => {
                     <div className="w-16 h-16 rounded-full bg-[#1A2030] flex items-center justify-center mb-6 border border-white/5 group-hover:scale-110 transition-transform duration-300 group-hover:border-emerald-500/30">
                         <BarChart3 className="w-7 h-7 text-emerald-500" />
                     </div>
-                    <h3 className="text-white font-semibold text-lg mb-3">Beginner-Friendly Setup</h3>
+                    <h2 className="text-white font-semibold text-lg mb-3">Beginner-Friendly Setup</h2>
                     <p className="text-muted-foreground text-sm leading-relaxed">
                         Just upload your chart screenshot and let our AI suggest your next move.
                     </p>
@@ -20,7 +20,7 @@ const FeatureSection = () => {
                     <div className="w-16 h-16 rounded-full bg-[#1A2030] flex items-center justify-center mb-6 border border-white/5 group-hover:scale-110 transition-transform duration-300 group-hover:border-emerald-500/30">
                         <Brain className="w-7 h-7 text-emerald-500" />
                     </div>
-                    <h3 className="text-white font-semibold text-lg mb-3">AI-Powered Analysis</h3>
+                    <h2 className="text-white font-semibold text-lg mb-3">AI-Powered Analysis</h2>
                     <p className="text-muted-foreground text-sm leading-relaxed">
                         Advanced pattern recognition & technical analysis
                     </p>
@@ -31,7 +31,7 @@ const FeatureSection = () => {
                     <div className="w-16 h-16 rounded-full bg-[#1A2030] flex items-center justify-center mb-6 border border-white/5 group-hover:scale-110 transition-transform duration-300 group-hover:border-emerald-500/30">
                         <Zap className="w-7 h-7 text-emerald-500" />
                     </div>
-                    <h3 className="text-white font-semibold text-lg mb-3">Instant Signals</h3>
+                    <h2 className="text-white font-semibold text-lg mb-3">Instant Signals</h2>
                     <p className="text-muted-foreground text-sm leading-relaxed">
                         BUY, SELL, or HOLD recommendations in seconds
                     </p>
@@ -42,7 +42,7 @@ const FeatureSection = () => {
                     <div className="w-16 h-16 rounded-full bg-[#1A2030] flex items-center justify-center mb-6 border border-white/5 group-hover:scale-110 transition-transform duration-300 group-hover:border-emerald-500/30">
                         <Shield className="w-7 h-7 text-emerald-500" />
                     </div>
-                    <h3 className="text-white font-semibold text-lg mb-3">Risk Management</h3>
+                    <h2 className="text-white font-semibold text-lg mb-3">Risk Management</h2>
                     <p className="text-muted-foreground text-sm leading-relaxed">
                         Precise entry, stop-loss, and target levels
                     </p>

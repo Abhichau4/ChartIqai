@@ -100,7 +100,7 @@ export const Header = () => {
             <div className="md:hidden">
               <Sheet open={isOpen} onOpenChange={setIsOpen}>
                 <SheetTrigger asChild>
-                  <Button variant="ghost" size="icon" className="h-8 w-8 text-foreground">
+                  <Button variant="ghost" size="icon" className="h-8 w-8 text-foreground" aria-label="Open menu">
                     <Menu className="w-5 h-5" />
                   </Button>
                 </SheetTrigger>

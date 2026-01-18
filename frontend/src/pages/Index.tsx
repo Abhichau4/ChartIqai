@@ -10,15 +10,17 @@ import TradeScenarios from "@/components/TradeScenarios";
 import ProfessionalReasoning from "@/components/ProfessionalReasoning";
 import SignalSummary from "@/components/SignalSummary";
 import SocialShare from "@/components/SocialShare";
-import FeatureSection from "@/components/FeatureSection";
-import MasterTradingSection from "@/components/MasterTradingSection";
-import FAQSection from "@/components/FAQSection";
-import HowItWorks from "@/components/HowItWorks";
-import UserFeedback from "@/components/UserFeedback";
-import TradingContentSection from "@/components/TradingContentSection";
 import { useToast } from "@/hooks/use-toast";
 import { AnalysisData } from "@/types";
 import { useLocation } from "react-router-dom";
+import { Suspense, lazy } from "react";
+
+// Lazy load non-critical sections
+const FeatureSection = lazy(() => import("@/components/FeatureSection"));
+const FAQSection = lazy(() => import("@/components/FAQSection"));
+const HowItWorks = lazy(() => import("@/components/HowItWorks"));
+const UserFeedback = lazy(() => import("@/components/UserFeedback"));
+const TradingContentSection = lazy(() => import("@/components/TradingContentSection"));
 
 const Index = () => {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
@@ -390,7 +392,7 @@ Invalidation Conditions:
               AI Trading Analysis & <span className="text-gradient">Automated Trading Signals</span> for Forex, Stocks, Crypto & Bitcoin
             </h1>
 
-            <p className="text-lg md:text-xl font-medium text-muted-foreground/90 leading-loose max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl font-medium text-muted-foreground leading-loose max-w-3xl mx-auto">
               Get instant <strong className="text-white font-semibold">AI trading signals</strong> and professional trading analysis for <strong className="text-white font-semibold">Forex trading</strong>, <strong className="text-white font-semibold">Crypto trading</strong>, <strong className="text-white font-semibold">Bitcoin</strong>, and <strong className="text-white font-semibold">Stock trading</strong>. Our <strong className="text-white font-semibold">AI-powered trading platform</strong> delivers <strong className="text-white font-semibold">automated trading signals</strong>, pattern recognition, and risk management using advanced machine learning for profitable trading strategies.
             </p>
           </div>
@@ -402,12 +404,17 @@ Invalidation Conditions:
             <div className="max-w-2xl mx-auto glass-card p-1 rounded-2xl shadow-2xl shadow-primary/5 ring-1 ring-white/10">
               <ChartUploader onImageUpload={handleImageUpload} isAnalyzing={isAnalyzing} />
             </div>
-            <FeatureSection />
-            <MasterTradingSection />
-            <HowItWorks />
-            <TradingContentSection />
-            <FAQSection />
-            <UserFeedback />
+            <Suspense fallback={<div className="h-96 w-full flex items-center justify-center text-muted-foreground">Loading features...</div>}>
+              <FeatureSection />
+            </Suspense>
+            <Suspense fallback={<div className="h-96 w-full flex items-center justify-center text-muted-foreground">Loading how it works...</div>}>
+                <HowItWorks />
+            </Suspense>
+            <Suspense fallback={null}>
+                <TradingContentSection />
+                <FAQSection />
+                <UserFeedback />
+            </Suspense>
 
             <footer className="mt-20 pt-8 border-t border-white/5 text-center pb-8">
               <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mb-4">
@@ -416,7 +423,7 @@ Invalidation Conditions:
                 <a href="/#how-it-works" className="text-sm text-muted-foreground hover:text-primary transition-colors">How It Works</a>
                 <a href="/#faq" className="text-sm text-muted-foreground hover:text-primary transition-colors">FAQ</a>
               </div>
-              <p className="text-xs text-muted-foreground/50 max-w-2xl mx-auto mb-4">
+              <p className="text-xs text-muted-foreground max-w-2xl mx-auto mb-4">
                 Disclaimer: Chart Analyzer is an AI-based analytical tool designed to assist with market analysis. It does not offer investment advice or trading signals. All information provided is for educational and informational purposes only. Users are responsible for their own trading decisions and risk management.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-muted-foreground">
@@ -477,7 +484,7 @@ Invalidation Conditions:
                 <a href="/#how-it-works" className="text-sm text-muted-foreground hover:text-primary transition-colors">How It Works</a>
                 <a href="/#faq" className="text-sm text-muted-foreground hover:text-primary transition-colors">FAQ</a>
               </div>
-              <p className="text-xs text-muted-foreground/50 text-center mb-4">
+              <p className="text-xs text-muted-foreground text-center mb-4">
                 Disclaimer: Chart Analyzer is an AI-based analytical tool designed to assist with market analysis. It does not offer investment advice or trading signals. All information provided is for educational and informational purposes only. Users are responsible for their own trading decisions and risk management.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
