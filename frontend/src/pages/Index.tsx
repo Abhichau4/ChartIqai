@@ -17,6 +17,7 @@ import { Suspense, lazy } from "react";
 
 // Lazy load non-critical sections
 const FeatureSection = lazy(() => import("@/components/FeatureSection"));
+const WhyChooseSection = lazy(() => import("@/components/WhyChooseSection"));
 const FAQSection = lazy(() => import("@/components/FAQSection"));
 const HowItWorks = lazy(() => import("@/components/HowItWorks"));
 const UserFeedback = lazy(() => import("@/components/UserFeedback"));
@@ -408,6 +409,9 @@ Invalidation Conditions:
             </Suspense>
             <Suspense fallback={<div className="h-96 w-full flex items-center justify-center text-muted-foreground">Loading how it works...</div>}>
                 <HowItWorks />
+            </Suspense>
+            <Suspense fallback={<div className="h-96 w-full flex items-center justify-center text-muted-foreground">Loading info...</div>}>
+                <WhyChooseSection />
             </Suspense>
             <Suspense fallback={null}>
                 <FAQSection />
