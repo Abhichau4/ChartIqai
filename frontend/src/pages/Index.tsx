@@ -11,6 +11,7 @@ import ProfessionalReasoning from "@/components/ProfessionalReasoning";
 import SignalSummary from "@/components/SignalSummary";
 import SocialShare from "@/components/SocialShare";
 import FeatureSection from "@/components/FeatureSection";
+import MasterTradingSection from "@/components/MasterTradingSection";
 import FAQSection from "@/components/FAQSection";
 import HowItWorks from "@/components/HowItWorks";
 import UserFeedback from "@/components/UserFeedback";
@@ -402,6 +403,7 @@ Invalidation Conditions:
               <ChartUploader onImageUpload={handleImageUpload} isAnalyzing={isAnalyzing} />
             </div>
             <FeatureSection />
+            <MasterTradingSection />
             <HowItWorks />
             <TradingContentSection />
             <FAQSection />
